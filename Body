@@ -1,0 +1,176 @@
+import React, { useState } from 'react';
+import { ChevronDown, Plus, X } from 'lucide-react';
+
+const TypeCard = ({ title, description }) => (
+  <div className="bg-white rounded-lg shadow-sm p-4 mb-4">
+    <h3 className="text-lg font-semibold text-indigo-800 mb-2">{title}</h3>
+    <div className="aspect-square w-full bg-gray-100 mb-2 rounded">
+      {/* Placeholder for 200x200mm canvas */}
+    </div>
+    <p className="text-gray-600 text-sm">{description}</p>
+  </div>
+);
+
+const ProjectCard = ({ title, content, reflection }) => {
+  const [isContentVisible, setIsContentVisible] = useState(false);
+  const [isReflectionVisible, setIsReflectionVisible] = useState(false);
+
+  return (
+    <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-bold text-indigo-800">{title}</h2>
+        <button 
+          onClick={() => setIsContentVisible(!isContentVisible)}
+          className="text-indigo-600 hover:text-indigo-800 transition-colors"
+          aria-label="Toggle content"
+        >
+          {isContentVisible ? <X size={24} /> : <ChevronDown size={24} />}
+        </button>
+      </div>
+      
+      {isContentVisible && (
+        <div className="space-y-4 mb-4">
+          {content}
+          <div className="mt-6 border-t pt-4">
+            <button
+              onClick={() => setIsReflectionVisible(!isReflectionVisible)}
+              className="flex items-center text-indigo-600 hover:text-indigo-800"
+            >
+              <Plus size={20} className="mr-2" />
+              <span>What I Learned</span>
+            </button>
+            
+            {isReflectionVisible && (
+              <div className="mt-4 p-4 bg-indigo-50 rounded-lg">
+                {reflection}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const Portfolio = () => {
+  const typographyTypes = [
+    { title: "Axial System", description: "Typography arranged along a central axis." },
+    { title: "Radial System", description: "Text elements arranged in circular pattern." },
+    { title: "Dilatational System", description: "Typography expanding from central point." },
+    { title: "Random System", description: "Controlled chaos in typographic arrangement." },
+    { title: "Grid System", description: "Systematic organization using grid structure." },
+    { title: "Modular System", description: "Repeating units creating rhythm." },
+    { title: "Transitional System", description: "Gradual changes in arrangement." },
+    { title: "Bilateral System", description: "Symmetrical balance in typography." }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-purple-100">
+      <header className="bg-white shadow-md">
+        <div className="max-w-6xl mx-auto px-4 py-6">
+          <h1 className="text-4xl font-bold text-center text-indigo-900">Design Fundamentals Portfolio</h1>
+          <nav className="mt-6">
+            <ul className="flex flex-wrap justify-center gap-6 text-indigo-600">
+              <li><a href="#html-project" className="hover:text-indigo-800 transition-colors">HTML Project</a></li>
+              <li><a href="#carp-project" className="hover:text-indigo-800 transition-colors">CARP Project</a></li>
+              <li><a href="#typography-project" className="hover:text-indigo-800 transition-colors">Typography</a></li>
+              <li><a href="#types" className="hover:text-indigo-800 transition-colors">Types</a></li>
+              <li><a href="#reflection" className="hover:text-indigo-800 transition-colors">Reflection</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main className="max-w-4xl mx-auto px-4 py-12">
+        <ProjectCard
+          title="HTML/GitHub Project"
+          content={
+            <div>
+              <p className="text-gray-700">Building responsive website from scratch using semantic HTML5 and CSS Grid layouts.</p>
+              <div className="mt-4">
+                <h3 className="font-semibold text-lg text-indigo-800">Key Points:</h3>
+                <ul className="list-disc pl-5 mt-2 space-y-2 text-gray-700">
+                  <li>Mastered responsive layouts using CSS Grid and Flexbox</li>
+                  <li>Implemented semantic HTML5 for better accessibility</li>
+                  <li>Learned Git version control and GitHub deployment</li>
+                </ul>
+              </div>
+            </div>
+          }
+          reflection={
+            <p className="text-gray-700">Gained practical experience in modern web development and version control.</p>
+          }
+        />
+
+        <ProjectCard
+          title="CARP Project"
+          content={
+            <div>
+              <p className="text-gray-700">Exploring fundamental design principles through Contrast, Alignment, Repetition, and Proximity.</p>
+              <div className="mt-4">
+                <h3 className="font-semibold text-lg text-indigo-800">Design Elements:</h3>
+                <ul className="list-disc pl-5 mt-2 space-y-2 text-gray-700">
+                  <li>Created visual hierarchy through contrast</li>
+                  <li>Applied alignment for professional layouts</li>
+                  <li>Used repetition for consistency</li>
+                </ul>
+              </div>
+            </div>
+          }
+          reflection={
+            <p className="text-gray-700">Developed understanding of core design principles and their practical application.</p>
+          }
+        />
+
+        <ProjectCard
+          title="Typography Project"
+          content={
+            <div>
+              <p className="text-gray-700">Exploring typeface selection, spacing, and hierarchy in design.</p>
+              <div className="mt-4">
+                <h3 className="font-semibold text-lg text-indigo-800">Typography Focus:</h3>
+                <ul className="list-disc pl-5 mt-2 space-y-2 text-gray-700">
+                  <li>Experimented with typeface combinations</li>
+                  <li>Studied spacing and readability</li>
+                  <li>Created typographic hierarchies</li>
+                </ul>
+              </div>
+            </div>
+          }
+          reflection={
+            <p className="text-gray-700">Learned importance of typography in effective communication and design.</p>
+          }
+        />
+
+        <section id="types" className="mb-8">
+          <h2 className="text-2xl font-bold text-indigo-800 mb-6">Types</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {typographyTypes.map((type, index) => (
+              <TypeCard key={index} {...type} />
+            ))}
+          </div>
+        </section>
+
+        <ProjectCard
+          title="Reflection Essay"
+          content={
+            <div className="prose text-gray-700">
+              <p>Reflecting on learning journey through web development, design principles, and typography.</p>
+              <p>Key insights gained from HTML/GitHub, CARP, and Typography projects.</p>
+              <p>Understanding the integration of technical skills with design principles.</p>
+            </div>
+          }
+          reflection={
+            <p className="text-gray-700">Developed comprehensive understanding of web design fundamentals.</p>
+          }
+        />
+      </main>
+
+      <footer className="bg-white mt-12 py-6 text-center text-gray-600">
+        <p>&copy; 2024 Portfolio by [Your Name] | All rights reserved</p>
+      </footer>
+    </div>
+  );
+};
+
+export default Portfolio;
