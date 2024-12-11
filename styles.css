@@ -137,8 +137,8 @@ h1 {
     margin-bottom: 1rem;
 }
 
-/* Typography Systems Grid */
-.typography-systems-grid {
+/* Typography Types Grid */
+.typography-Types-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
