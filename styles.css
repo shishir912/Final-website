@@ -251,3 +251,69 @@ footer {
         transform: translateY(0);
     }
 }
+.typography-types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.system-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.system-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.system-card h3 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+.system-image {
+    margin: 1rem 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #f1f2f6;
+}
+
+.system-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.system-card:hover .system-image img {
+    transform: scale(1.02);
+}
+
+.system-description {
+    margin-top: 1rem;
+}
+
+.system-description p {
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .typography-types-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .system-card {
+        margin-bottom: 1rem;
+    }
+}
