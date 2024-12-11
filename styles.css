@@ -1,68 +1,246 @@
-/* Custom styles beyond Tailwind */
-.project-content {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+/* Modern CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.project-content.visible {
-    display: block;
-    opacity: 1;
+/* Custom Properties */
+:root {
+    --primary-color: #2a9d8f;
+    --secondary-color: #e9c46a;
+    --accent-color: #e76f51;
+    --background-color: #264653;
+    --text-color: #f8f9fa;
+    --card-background: #1a1a1a;
+    --nav-background: rgba(42, 157, 143, 0.95);
 }
 
-/* Animation for reflection sections */
-.reflection-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    background-image: linear-gradient(45deg, #264653 25%, #1a1a1a 25%, #1a1a1a 50%, #264653 50%, #264653 75%, #1a1a1a 75%, #1a1a1a 100%);
+    background-size: 56.57px 56.57px;
 }
 
-.reflection-content.visible {
-    max-height: 500px;
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(38, 70, 83, 0.9), rgba(42, 157, 143, 0.8));
+    padding: 2rem;
+    position: relative;
 }
 
-/* Typography canvas styles */
-.canvas-container {
-    aspect-ratio: 1;
-    width: 200px; /* equivalent to 200mm in screen display */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+/* Navigation */
+.floating-nav {
+    background: var(--nav-background);
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.floating-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.floating-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.floating-nav a:hover {
+    background: var(--secondary-color);
+    color: var(--background-color);
+}
+
+/* Main Content */
+.container {
+    max-width: 1200px;
     margin: 0 auto;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 2rem;
 }
 
-/* Smooth transitions */
-.transition-all {
-    transition: all 0.3s ease-in-out;
+/* Project Cards */
+.project-card {
+    background: var(--card-background);
+    border-radius: 15px;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.card-accent {
+    position: absolute;
+    left: -2rem;
+    top: 0;
+    bottom: 0;
     width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #888;
+    background: var(--accent-color);
     border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
+.project-card h2 {
+    color: var(--secondary-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
-/* Custom focus styles */
-button:focus, a:focus {
-    outline: 2px solid #4F46E5;
-    outline-offset: 2px;
+/* Typography Systems Grid */
+.typography-systems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
 }
 
-/* Mobile responsive adjustments */
+.system-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.system-card:hover {
+    transform: translateY(-5px);
+}
+
+.system-image {
+    margin: 1rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.system-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--card-background);
+    margin: 5% auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 15px;
+    position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-button {
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: var(--accent-color);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: var(--card-background);
+    margin-top: 4rem;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    .canvas-container {
-        width: 100%;
-        max-width: 200px;
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .floating-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-accent {
+        left: -1rem;
+    }
+
+    .project-card {
+        padding: 1.5rem;
     }
 }
